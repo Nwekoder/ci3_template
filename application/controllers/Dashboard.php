@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
         $headerData['title'] = 'Dashboard';
         
         $sidebarData['title'] = 'Admin';
-        $sidebarData['username'] = 'admin';
+        $sidebarData['username'] = $this->session->userdata('username');
 
         $data['header'] = $this->load->view('header', $headerData, TRUE);
         $data['footer'] = $this->load->view('footer', NULL, TRUE);

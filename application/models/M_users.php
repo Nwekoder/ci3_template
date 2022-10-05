@@ -9,7 +9,11 @@ class M_users extends CI_Model {
     public function get_data($id) {
         // Script yang menjalankan query untuk mengambil sebuah data berdasarkan id
         // yang ada pada tabel users di database
-        return $this->db->get_where('users', ['id' => $id]);
+        return $this->db->get_where('users', ['id_user' => $id]);
+    }
+    
+    public function find_data($filter) {
+        return $this->db->get_where('users', $filter);
     }
 
     public function add_data($data) {
@@ -20,12 +24,12 @@ class M_users extends CI_Model {
     public function edit_data($id, $data) {
         // Script yang menjalankan query untuk mengupdate sebuah data berdasarkan id
         // yang ada pada tabel users di database
-        $this->db->update('users', $data, ['id' => $id]);
+        $this->db->update('users', $data, ['id_user' => $id]);
     }
 
     public function delete($id) {
         // Script yang menjalankan query untuk menghapus sebuah data berdasarkan id
         // yang ada pada tabel users di database
-        $this->db->delete('users', ['id' => $id]);
+        $this->db->delete('users', ['id_user' => $id]);
     }
 }
