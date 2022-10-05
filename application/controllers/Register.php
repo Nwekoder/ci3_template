@@ -18,29 +18,39 @@ class Register extends CI_Controller {
     }
 
     public function register() {
-        // Belum Selesai
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $nama_lengkap = $this->input->post('nama_lengkap');
+        $jk = $this->input->post('jk');
+        $email = $this->input->post('email');
+        $no_hp = $this->input->post('no_hp');
+        $alamat = $this->input->post('alamat');
 
-        // $username = $this->input->post('username');
-        // $password = $this->input->post('password');
+        if($this->input->post('kirim')) {
+            if($username and $email) {
+                $userdata = $this->model->find_data([
+                    'username' => $username,
+                    'email' => $password
+                ]);
+    
+                if($userdata->row()) {
+                    $this->session->set_flashdata('error', 'Username atau Email sudah terdaftar!');
+    
+                    redirect('register');
+                }else {
+                   $this->model->add_data([
+                    'username' => $username,
+                    'password' => md5($password),
+                    'nama_lengkap' => $nama_lengkap,
+                    'jk' => $jk,
+                    'email' => $email,
+                    'no_hp' => $no_hp,
+                    'alamat' => $alamat,
+                   ]); 
 
-        // if($username and $password) {
-        //     $userdata = $this->model->find_data([
-        //         'username' => $username,
-        //         'password' => md5($password)
-        //     ]);
-
-        //     if($userdata->row()) {
-        //         $this->session->set_userdata([
-        //             'username' => $userdata->row()->username,
-        //             'nama_lengkap' => $userdata->row()->nama_lengkap,
-        //         ]);
-
-        //         redirect('/');
-        //     }else {
-        //         $this->session->set_flashdata('error', 'Username atau Password salah!');
-
-        //         redirect('login');
-        //     }
-        // }
+                   redirect('login');
+                }
+            }
+        }
     }
 }
