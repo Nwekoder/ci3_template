@@ -31,7 +31,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>3</h3>
+              <h3><?= $user_count ?></h3>
               <p>Total User</p>
             </div>
             <div class="icon">
@@ -45,7 +45,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>1</h3>
+              <h3><?= $user_count_l ?></h3>
               <p>User (L)</p>
             </div>
             <div class="icon">
@@ -59,7 +59,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>2</h3>
+              <h3><?= $user_count_p ?></h3>
               <p>User (P)</p>
             </div>
             <div class="icon">

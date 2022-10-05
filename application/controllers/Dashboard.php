@@ -5,6 +5,7 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
         // Script yang dijalankan pada saat controller dijalankan
+        $this->load->model('M_users', 'model');
     }
 
     
@@ -20,6 +21,10 @@ class Dashboard extends CI_Controller {
         $data['navbar'] = $this->load->view('navbar', NULL, TRUE);
         $data['sidebar'] = $this->load->view('sidebar', $sidebarData, TRUE);
         
+        $data['user_count'] = $this->model->count_data();
+        $data['user_count_l'] = $this->model->count_data(['jk' => 'L']);
+        $data['user_count_p'] = $this->model->count_data(['jk' => 'P']);
+
         $this->load->view('dashboard', $data);
     }
 }

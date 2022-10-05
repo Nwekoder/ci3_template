@@ -11,6 +11,13 @@ class M_users extends CI_Model {
         // yang ada pada tabel users di database
         return $this->db->get_where('users', ['id_user' => $id]);
     }
+
+    public function count_data($filter = NULL) {
+        if($filter) {
+            $this->db->where($filter);
+        }
+        return $this->db->count_all_results('users');
+    }
     
     public function find_data($filter) {
         return $this->db->get_where('users', $filter);
